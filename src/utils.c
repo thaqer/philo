@@ -14,12 +14,16 @@
 
 int	ft_atoi(const char *str)
 {
-	int	result;
+	long	result;
 
 	result = 0;
 	while (*str >= '0' && *str <= '9')
+	{
 		result = result * 10 + (*str++ - '0');
-	return (result);
+		if (result > 2147483647)
+			return (-1);
+	}
+	return ((int)result);
 }
 
 long long	get_time_ms(void)

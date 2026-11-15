@@ -14,6 +14,8 @@
 
 int	init_data(t_data *data, int argc, char **argv)
 {
+	data->philos = NULL;
+	data->fork_locks = NULL;
 	data->philo_count = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
@@ -24,7 +26,7 @@ int	init_data(t_data *data, int argc, char **argv)
 		data->must_eat_count = -1;
 	if (data->philo_count <= 0 || data->time_to_die <= 0
 		|| data->time_to_eat <= 0 || data->time_to_sleep <= 0
-		|| (data->must_eat_count <= 0 && data->must_eat_count != -1))
+		|| (argc == 6 && data->must_eat_count <= 0))
 		return (0);
 	data->stop = 0;
 	return (1);
